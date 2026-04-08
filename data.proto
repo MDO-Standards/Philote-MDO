@@ -147,3 +147,37 @@ message Array {
     // continuous data
     repeated double data = 6;
 }
+
+
+/*
+    Definition of a discrete variable data type.
+
+    Discrete variables can hold any JSON-compatible value: scalars (bool, int,
+    float, string), lists, or nested structures via google.protobuf.Value.
+*/
+message DiscreteVariable {
+    // variable name
+    string name = 1;
+
+    // variable type (kDiscreteInput or kDiscreteOutput)
+    VariableType type = 2;
+
+    // variable value (scalar, list, or nested struct)
+    google.protobuf.Value value = 3;
+}
+
+
+/*
+    Wrapper message that multiplexes continuous and discrete variable data
+    in a single stream. Used by evaluation RPCs so that both kinds of
+    variables can be sent/received together.
+*/
+message VariableMessage {
+    oneof payload {
+        // continuous variable data (chunked double arrays)
+        Array continuous = 1;
+
+        // discrete variable data
+        DiscreteVariable discrete = 2;
+    }
+}

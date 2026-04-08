@@ -58,21 +58,21 @@ service DisciplineService {
 // Definition of the generic Explicit Component RPC
 service ExplicitService {
     // Calls the discipline Compute function
-    rpc ComputeFunction(stream Array) returns (stream Array) {}
+    rpc ComputeFunction(stream VariableMessage) returns (stream VariableMessage) {}
 
     // Calls the discipline ComputePartials function
-    rpc ComputeGradient(stream Array) returns (stream Array) {}
+    rpc ComputeGradient(stream VariableMessage) returns (stream VariableMessage) {}
 }
 
 
-// Definition of the generic Explicit Discipline RPC
+// Definition of the generic Implicit Discipline RPC
 service ImplicitService {
     // Calls the discipline Compute function
-    rpc ComputeResiduals(stream Array) returns (stream Array) {}
+    rpc ComputeResiduals(stream VariableMessage) returns (stream VariableMessage) {}
 
     // Calls the discipline RPC that solves the nonlinear equations
-    rpc SolveResiduals(stream Array) returns (stream Array) {}
+    rpc SolveResiduals(stream VariableMessage) returns (stream VariableMessage) {}
 
     // Calls the discipline ComputePartials function
-    rpc ComputeResidualGradients(stream Array) returns (stream Array) {}
+    rpc ComputeResidualGradients(stream VariableMessage) returns (stream VariableMessage) {}
 }
