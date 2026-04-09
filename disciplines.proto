@@ -52,6 +52,10 @@ service DisciplineService {
 
     // Gets the discipline partials definitions
     rpc GetPartialDefinitions(google.protobuf.Empty) returns (stream philote.PartialsMetaData) {}
+
+    // Sets shapes for variables flagged as dynamic_shape.
+    // Must be called after GetVariableDefinitions and before compute RPCs.
+    rpc SetVariableShapes(stream philote.VariableMetaData) returns (google.protobuf.Empty) {}
 }
 
 

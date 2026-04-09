@@ -102,7 +102,7 @@ enum VariableType {
 message VariableMetaData {
     // enum to identify the variable type
     VariableType type = 1;
-    
+
     // variable name
     string name = 3;
 
@@ -111,6 +111,9 @@ message VariableMetaData {
 
     // variable units
     string units = 5;
+
+    // when true, the client is allowed to set this variable's shape
+    bool dynamic_shape = 6;
 }
 
 /*
