@@ -1,3 +1,8 @@
+---
+sidebar_position: 3
+title: Release Notes
+---
+
 # Release Notes
 
 ## Versions 0.5.2

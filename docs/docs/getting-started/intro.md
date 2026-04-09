@@ -1,4 +1,7 @@
-![philote](graphics/logos/philote.svg)
+---
+sidebar_position: 1
+title: Introduction
+---
 
 # Introduction
 
@@ -48,7 +51,3 @@ relationship to the ansible network in Orson Scott Card's Ender novels (Ender's
 Game, Speaker for the Dead, etc.). In the series, Philotes are the most
 elementary building block in the universe and are used to enable faster than
 light communications over vast distances via the ansible network.
-
-<!-- :::{sidebar} My sidebar title
-My sidebar content
-::: -->

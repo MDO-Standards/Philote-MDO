@@ -1,27 +1,34 @@
+---
+sidebar_position: 2
+title: Basic Discipline
+---
+
 # Basic Discipline
 
 The basic discipline service (DisciplineService) serves as the foundation for
 all types of disciplines within Philote:
 
-    service DisciplineService {
-        // Gets the fundamental properties of the discipline
-        rpc GetInfo(google.protobuf.Empty) returns (philote.DisciplineProperties) {}
+```protobuf
+service DisciplineService {
+    // Gets the fundamental properties of the discipline
+    rpc GetInfo(google.protobuf.Empty) returns (philote.DisciplineProperties) {}
 
-        // RPC to set remote streaming options
-        rpc SetStreamOptions(philote.StreamOptions) returns (google.protobuf.Empty) {}
+    // RPC to set remote streaming options
+    rpc SetStreamOptions(philote.StreamOptions) returns (google.protobuf.Empty) {}
 
-        // Sets the discipline options
-        rpc SetOptions(philote.DisciplineOptions) returns (google.protobuf.Empty) {}
+    // Sets the discipline options
+    rpc SetOptions(philote.DisciplineOptions) returns (google.protobuf.Empty) {}
 
-        // Sets up the discipline
-        rpc Setup(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+    // Sets up the discipline
+    rpc Setup(google.protobuf.Empty) returns (google.protobuf.Empty) {}
 
-        // Gets the variable definitions for the discipline
-        rpc GetVariableDefinitions(google.protobuf.Empty) returns (stream philote.VariableMetaData) {}
+    // Gets the variable definitions for the discipline
+    rpc GetVariableDefinitions(google.protobuf.Empty) returns (stream philote.VariableMetaData) {}
 
-        // Gets the discipline partials definitions
-        rpc GetPartialDefinitions(google.protobuf.Empty) returns (stream philote.PartialsMetaData) {}
-    }
+    // Gets the discipline partials definitions
+    rpc GetPartialDefinitions(google.protobuf.Empty) returns (stream philote.PartialsMetaData) {}
+}
+```
 
 In a typical object-oriented framework the DisciplineService would serve as a
 base class from which all disciplines would be inherited. However, gRPC and
@@ -52,7 +59,7 @@ on the discipline).
 
 ## Setup
 
-The setup remote procedure call (``RPC``) enables the MDO framework to query the
+The setup remote procedure call (`RPC`) enables the MDO framework to query the
 analysis server for information about inputs and outputs. Frameworks, such as
 OpenMDAO, may use this to allocate the variable and define units. However, in
 general, this RPC is optional (for the MDO framework). It should still be
