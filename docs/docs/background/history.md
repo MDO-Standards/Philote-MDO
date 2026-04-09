@@ -1,3 +1,8 @@
+---
+sidebar_position: 1
+title: Historical Background
+---
+
 # Historical Background
 
 Distributed computing in and for itself is not new. Tools like MPI and a variety

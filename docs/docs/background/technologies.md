@@ -1,3 +1,8 @@
+---
+sidebar_position: 2
+title: Technology
+---
+
 # Technology
 
 Philote is built on top of Protocol Buffers (protobuf) and gRPC. Both of these
