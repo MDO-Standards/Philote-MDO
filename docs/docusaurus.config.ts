@@ -43,7 +43,7 @@ const config: Config = {
                     rehypePlugins: [rehypeKatex],
                     editUrl:
                         "https://github.com/MDO-Standards/Philote-MDO/tree/develop/docs/",
-                    lastVersion: "current",
+                    lastVersion: "0.8.0",
                     versions: {
                         current: {
                             label: "Next",
