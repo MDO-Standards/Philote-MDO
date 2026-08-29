@@ -32,6 +32,26 @@ import "data.proto";
 // or implementation. Base classes are necessary to avoid code duplication in
 // bindings for implicit and explicit disciplines.
 service DisciplineService {
+    // Starts a job and returns its handle.
+    //
+    // A job owns one discipline instance and all the state built on it. The
+    // client must call this before any RPC other than GetInfo and
+    // GetAvailableOptions, and must send the returned id in the
+    // "philote-job-id" metadata header on every subsequent call. A call that
+    // omits the header is rejected with FAILED_PRECONDITION; one that names an
+    // unknown or expired job is rejected with NOT_FOUND.
+    //
+    // Servers may cap the number of concurrent jobs and reject further
+    // requests with RESOURCE_EXHAUSTED.
+    rpc StartJob(google.protobuf.Empty) returns (philote.JobHandle) {}
+
+    // Ends the job named in the metadata header and releases its resources.
+    rpc EndJob(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+    // Marks the job named in the metadata header as still in use, so that it
+    // is not evicted while the client is idle between evaluations.
+    rpc KeepAlive(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
     // Gets the fundamental properties of the discipline
     rpc GetInfo(google.protobuf.Empty) returns (philote.DisciplineProperties) {}
 
