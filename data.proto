@@ -51,6 +51,20 @@ message DisciplineProperties {
 
 
 /*
+    Handle identifying a server-side job.
+
+    A job is a session that owns one discipline instance and the state built up
+    around it (options, variable metadata, and any resources the discipline
+    allocates). Clients obtain a handle from StartJob and present the id in the
+    "philote-job-id" metadata header on every subsequent call, which lets a
+    single server support concurrent clients without them interfering.
+*/
+message JobHandle {
+    // opaque, server-assigned job identifier
+    string job_id = 1;
+}
+
+/*
     Stream options message type
 */
 message StreamOptions {
